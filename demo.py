@@ -112,7 +112,7 @@ def setup():
                 comm = i
                 processes[i].receive_data(dataInstruction=data)
 
-        print("Data sent to commander", data)
+        print("Data retrieved by commander", data)
 
     start = input("Input X for commander to send data to other processes\n")
     if start:
@@ -154,8 +154,8 @@ def setup():
                 ("(Hint: is byzantine)" if processes[i].is_byzantine else ""),
             )
     print(
-        "Decision is to ",
-        ("send data " if make_decision(outcomes=outcomeBools) else "not send data"),
+        "Decision is to",
+        (" send data" if make_decision(outcomes=outcomeBools) else " not send data"),
     )
 
 

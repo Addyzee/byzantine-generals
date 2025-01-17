@@ -1,0 +1,25 @@
+sequenceDiagram
+    participant S as Commander S
+    participant P as Process P (Byzantine)
+    participant Q as Process Q
+    participant R as Process R
+    participant Z as External Party Z
+
+    Note over S: Receives initial confidential data
+    
+    S->>P: Send data (may corrupt confidentiality)
+    S->>Q: Send data
+    S->>R: Send data
+    
+    P-->>Q: Request/share data
+    P-->>R: Request/share data
+    Q-->>P: Request/share data
+    Q-->>R: Request/share data
+    R-->>P: Request/share data
+    R-->>Q: Request/share data
+    
+    Note over P,R: Each process determines majority confidentiality
+    
+    P->>Z: May send if majority votes non-confidential
+    Q->>Z: May send if majority votes non-confidential
+    R->>Z: May send if majority votes non-confidential
